@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/farm",
+      "lambdaFunction": "farmapi",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/farm"
+    }
+  ],
+  "resourceName": "farmapi",
+  "apiName": "farmapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "farmapi"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-farmapi-dev-162153-authRole",
+    "unAuthRoleName": "amplify-farmapi-dev-162153-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "farmapi",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

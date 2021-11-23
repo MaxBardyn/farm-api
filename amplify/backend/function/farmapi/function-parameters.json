@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "storage": {
+      "farmapi": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

@@ -1,0 +1,5 @@
+{
+    "tableName": "farmapi",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}

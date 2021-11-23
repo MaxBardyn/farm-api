@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-farmapi-dev-162153-authRole",
+      "UnauthRoleArn": "arn:aws:iam::821687364491:role/amplify-farmapi-dev-162153-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::821687364491:role/amplify-farmapi-dev-162153-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-farmapi-dev-162153-deployment",
+      "UnauthRoleName": "amplify-farmapi-dev-162153-unauthRole",
+      "StackName": "amplify-farmapi-dev-162153",
+      "StackId": "arn:aws:cloudformation:us-east-1:821687364491:stack/amplify-farmapi-dev-162153/b73e83c0-4c68-11ec-b2f1-0e9ad1da91a9",
+      "AmplifyAppId": "d2gxtngs0bh6k0"
+    },
+    "categories": {
+      "function": {
+        "farmapi": {
+          "deploymentBucketName": "amplify-farmapi-dev-162153-deployment",
+          "s3Key": "amplify-builds/farmapi-57784a2f794d31616d79-build.zip"
+        }
+      }
+    }
+  }
+}
