@@ -1,0 +1,39 @@
+.header-secret{
+    border-bottom: 3px  solid silver;
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.element-secret{
+    width: auto;
+
+    border: 1.5px  solid silver;  
+    border-radius: 1rem;
+}
+
+.main-section-secret{
+    margin:2rem 0rem ;
+    padding: 1rem;
+    border: 3px  solid silver;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    display: flex;
+    
+align-content: flex-start;
+
+flex-wrap: wrap;
+    border-radius: 2rem;
+}
+.create-section-secret{
+    margin:2rem auto ;
+    padding: 2rem  ;
+    border: 3px  solid silver;
+    
+   
+    height: 500px;
+      border-radius: 2rem;
+}
