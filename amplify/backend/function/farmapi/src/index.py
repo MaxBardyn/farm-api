@@ -16,12 +16,18 @@ BASE_ROUTE = "/farm"
 @app.route(BASE_ROUTE, methods=['POST'])
 def add_farm():
     request_json = request.get_json()
+    if request_json.get("SECRETKEY") != "^%$#@!":
+        return jsonify(message="Wrong data !!! ")
     client.put_item(TableName=TABLE, Item={
         'id': {'S': str(uuid4())},
-        'farm_address': {'S': request_json.get("farm_address")},
+        'timestamp': {'S': request_json.get("timestamp")},
+        'sensor_id': {'S': request_json.get("sensor_id")},
+        'sensor_type': {'S': request_json.get("sensor_type")},
+        'SECRETKEY': {'S': request_json.get("SECRETKEY")},
         'humidity': {'S': request_json.get("humidity")},
         'lighting_level': {'S': request_json.get("lighting_level")},
-        'sensor_lacation': {'S': request_json.get("sensor_lacation")}
+        'sensor_lacation': {'S': request_json.get("sensor_lacation")},
+        'farm_address': {'S': request_json.get("farm_address")},
     })
     return jsonify(message="farm sensor created")
 

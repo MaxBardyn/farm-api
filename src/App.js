@@ -8,7 +8,10 @@ function App() {
   const [textObj, setTextObj] = useState([]);
 
 
-
+  const [sensorId, setSensorId] = useState("dsf")
+  const [sensorType, setSensorType ]= useState("fdsf")
+  const [timestamp, setTimestamp ]= useState("fdsf")
+  const [APIKey, setAPIKey]= useState("^%$#@!")
   const [farmAddress, setFarmAddress] = useState("sdf")
   const [humidity, setHumidity] = useState("sdf")
   const [lightingLevel, setLightingLevel] = useState("dsf")
@@ -42,23 +45,37 @@ function App() {
 
 
           <div className="create-section-secret" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <p style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>
               Адрес ферми
-            </p>
+            </span>
             <TextField onChange={(e) => setFarmAddress(e.target.value)} style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
-            <p style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>
               Вологість почви
-            </p>
+            </span>
             <TextField onChange={(e) => setHumidity(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
 
-            <p style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>   Рівень освітлення</p>
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>   Рівень освітлення</span>
             <TextField onChange={(e) => setLightingLevel(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
 
-            <p style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>  Місце розташування сенсора</p>
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>  Місце розташування сенсора</span>
             <TextField onChange={(e) => setSensorLacation(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
+           
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>  Вкажіть час зняття показників</span>
+            <TextField onChange={(e) => setTimestamp(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
+           
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>  Вкажіть ІД сенсора</span>
+            <TextField onChange={(e) => setSensorId(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
+           
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>  Вкажіть тип сенсора</span>
+            <TextField onChange={(e) => setSensorType(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
+           
+           
+            <span style={{ color: "black", fontFamily: "'Courier New', Courier, monospace", fontWeight: "900" }}>  Вкажіть секрет сенсора</span>
+            <TextField onChange={(e) => setAPIKey(e.target.value)} multiline="true" style={{ margin: "0rem 0rem 1.5rem 0rem" }} type="text" />
+           
             <p
 
-              onClick={() => AddFarm(farmAddress, humidity, lightingLevel, sensorLocation)}
+              onClick={() => AddFarm(farmAddress, humidity, lightingLevel, sensorLocation,timestamp,sensorType,sensorId,APIKey)}
               class="link-protocol-secret create_template_button_t-secret btn-background-slide row "
               style={{cursor:'pointer'}}
             >
@@ -79,6 +96,16 @@ function App() {
                   </div>
                   <div style={{ height: "auto", display: "flex", flexDirection: "column", justifyContent: "space-around" }}>
                     <p style={{}}>
+                      Час зняття показників: {obj.timestamp.S}
+                    </p>
+                    <p style={{}}>
+                     ІД сенсора: {obj.sensor_id.S}
+                    </p>
+                    <p style={{}}>
+                      Тип сенсора: {obj.sensor_type.S}
+                    </p>
+
+                    <p style={{}}>
                       Адрес ферми: {obj.farm_address.S}
                     </p>
                     <p style={{}}>
@@ -91,6 +118,7 @@ function App() {
                       Місце розташування сенсора: {obj.sensor_lacation.S}
                     </p>
 
+                   
 
                   </div>
                 </div>
@@ -107,14 +135,18 @@ function App() {
   )
 
 }
-async function AddFarm(farmAddress, humidity, lightingLevel, sensorLocation) {
+async function  AddFarm(farmAddress, humidity, lightingLevel, sensorLocation,timestamp,sensorType,sensorId,APIKey) {
 
   const data = await API.post('farmapi', '/farm', {
     body: {
       farm_address: farmAddress,
       humidity: humidity,
       lighting_level: lightingLevel,
-      sensor_lacation: sensorLocation
+      sensor_lacation: sensorLocation,
+      timestamp:timestamp,
+      sensor_type:sensorType,
+      sensor_id:sensorId,
+      SECRETKEY:APIKey
     }
   })
 
