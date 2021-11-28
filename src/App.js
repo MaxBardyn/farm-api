@@ -79,7 +79,7 @@ function App() {
               class="link-protocol-secret create_template_button_t-secret btn-background-slide row "
               style={{cursor:'pointer'}}
             >
-              <p className="text_decoration" style={{ display: "flex" }}>Save parking data</p>
+              <p className="text_decoration" style={{ display: "flex" }}>Зберегти запис</p>
             </p>
           </div>
 
