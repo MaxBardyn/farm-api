@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
-import { API } from 'aws-amplify'
+import axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import "./Farm.css"
 
@@ -19,9 +18,10 @@ function App() {
   const [sensorLocation, setSensorLacation] = useState("fdsf")
   const fetchData = async () => {
     try {
-      const data = await API.get('farmapi', '/farm');
-      console.log(data)
-      setTextObj(data);
+      axios.get('http://b-max.xyz:80/api/').then(res => {
+        const data = res.data;
+        setTextObj(data);
+    })
     } catch (error) {
       console.log(error);
     }
@@ -136,27 +136,23 @@ function App() {
 
 }
 async function  AddFarm(farmAddress, humidity, lightingLevel, sensorLocation,timestamp,sensorType,sensorId,APIKey) {
-
-  const data = await API.post('farmapi', '/farm', {
-    body: {
-      farm_address: farmAddress,
-      humidity: humidity,
-      lighting_level: lightingLevel,
-      sensor_lacation: sensorLocation,
-      timestamp:timestamp,
-      sensor_type:sensorType,
-      sensor_id:sensorId,
-      SECRETKEY:APIKey
-    }
-  })
-
-  console.log(data)
+  const body = {
+    farm_address: farmAddress,
+    humidity: humidity,
+    lighting_level: lightingLevel,
+    sensor_lacation: sensorLocation,
+    timestamp:timestamp,
+    sensor_type:sensorType,
+    sensor_id:sensorId,
+    SECRETKEY:APIKey
+  }
+  axios.post(`http://b-max.xyz:5000/farm/`, {body})
 
 }
 
 async function deleteObj(id) {
-  const del = await API.del('farmapi', `/farm/${id}`)
-  console.log(del);
+  axios.delete(`http://b-max.xyz:5000/farm/${id}`)
+  
 }
 
 

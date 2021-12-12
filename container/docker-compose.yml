@@ -1,0 +1,27 @@
+version: '3'
+services:
+  back:
+    hostname: backend
+    image: maxbardyn/backend
+    environment:
+      - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+      - AWS_REGION=us-east-1
+      - STORAGE_FARMAPI_NAME=farmapi-dev
+    build:
+      dockerfile: ./backend/Dockerfile
+    deploy:
+      x-aws-autoscaling: 
+        cpu: 15
+        max: 3
+    ports:
+      - 5000:5000
+  front:
+    hostname: frontend
+    depends_on: 
+      - backend
+    image: maxbardyn/frontend
+    build:
+      dockerfile: ./frontend/Dockerfile
+    ports:
+      - 80:80

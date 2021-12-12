@@ -1,0 +1,21 @@
+version: '3'
+services:
+  posting1:
+    hostname: posting
+    image: maxbardyn/posting
+    build:
+      context: .
+      dockerfile: "Dockerfile"
+  posting2:
+    hostname: posting2
+    image: maxbardyn/posting
+    build:
+      context: .
+      dockerfile: "Dockerfile"
+  posting3:
+    hostname: posting3
+    image: maxbardyn/posting
+    build:
+      context: .
+      dockerfile: "Dockerfile"
+
