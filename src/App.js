@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     fetchData();
   }, [
-    textObj
+  
   ]);
 
   return (
