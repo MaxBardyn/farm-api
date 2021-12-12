@@ -1,6 +1,6 @@
 version: '3'
 services:
-  back:
+  backend:
     hostname: backend
     image: maxbardyn/backend
     environment:
@@ -16,7 +16,7 @@ services:
         max: 3
     ports:
       - 5000:5000
-  front:
+  frontend:
     hostname: frontend
     depends_on: 
       - backend
