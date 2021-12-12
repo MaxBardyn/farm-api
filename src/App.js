@@ -146,7 +146,7 @@ async function  AddFarm(farmAddress, humidity, lightingLevel, sensorLocation,tim
     sensor_id:sensorId,
     SECRETKEY:APIKey
   }
-  axios.post(`http://b-max.xyz:5000/farm/`, {body})
+  axios.post(`http://b-max.xyz:5000/farm`, {body})
 
 }
 
